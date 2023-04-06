@@ -1,0 +1,52 @@
+.backgroundOff {
+    background-color: #68ffde;
+}
+.backgroundOn {
+    background-color: #0d2e2e;
+}
+.btnOff{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background-color: #0d2e2e;
+    color: #68ffde;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 50px;
+    font-weight: 700;
+    box-shadow: 5px 5px  5px 5px rgb(29, 102, 102, 0.5);
+    border-color: #0d2e2e;
+}
+button:hover {
+    cursor: pointer;
+}
+.btnOn{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background-color: #68ffde;
+    color: #0d2e2e;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 50px;
+    font-weight: 700;
+    box-shadow: 5px 5px 5px 5px rgb(29, 102, 102, 0.5);
+    border-color: #0d2e2e;
+}
+.timeOnOff {
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 450px;
+    bottom: 0;
+    text-align: center;
+}
