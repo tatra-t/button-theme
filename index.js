@@ -3,65 +3,65 @@ let background = document.querySelector(".backgroundOff");
 let button = document.querySelector("button");
 let timeOnOff = document.querySelector(".timeOnOff");
 
-if (localStorage.getItem("timeOff") !== null) {
+function turnOff() {
   button.textContent = "TURN OFF";
-    let time = localStorage.getItem("timeOff");
-    timeOnOff.innerHTML = `Last turn off: ${formatDate(time)} `;
+  let time = localStorage.getItem("timeOff");
+  timeOnOff.innerHTML = `Last turn off: ${formatDate(time)} `;
   timeOnOff.style.color = "#0d2e2e";
-  
+}
+function turnOn() {
+  button.textContent = "TURN ON";
+  let time = localStorage.getItem("timeOn");
+  timeOnOff.innerHTML = `Last turn on: ${formatDate(time)} `;
+  timeOnOff.style.color = "#68ffde";
+}
+
+if (localStorage.getItem("timeOff") !== null) {
+  turnOff();
 }
 if (localStorage.getItem("timeOn") !== null) {
-    button.textContent = "TURN ON";
-    let time = localStorage.getItem("timeOn");
-    timeOnOff.innerHTML = `Last turn on: ${formatDate(time)} `;
-  timeOnOff.style.color = "#68ffde";
-
+  turnOn();
 }
 
 button.addEventListener("click", () => {
   if (button.textContent === "TURN OFF") {
-    button.textContent = "TURN ON";
     localStorage.setItem("timeOn", new Date());
     localStorage.removeItem("timeOff");
-    let time = localStorage.getItem("timeOn");
-    timeOnOff.innerHTML = `Last turn on: ${formatDate(time)} `;
-    timeOnOff.style.color = "#68ffde";
+    turnOn();
   } else {
-    button.textContent = "TURN OFF";
     localStorage.setItem("timeOff", new Date());
     localStorage.removeItem("timeOn");
-    let time = localStorage.getItem("timeOff");
-    timeOnOff.innerHTML = `Last turn off: ${formatDate(time)} `;
-    timeOnOff.style.color = "#0d2e2e";
+    turnOff();
   }
   button.classList.toggle("btnOff");
   button.classList.toggle("btnOn");
   background.classList.toggle("backgroundOff");
   background.classList.toggle("backgroundOn");
 });
+
 function formatDate(time) {
-  let DD = new Date(time).getDate();
+  const date = new Date(time);
+  let DD = date.getDate();
    if (DD <10) { 
     DD = "0"+ DD;
   }
-  let MO = new Date(time).getMonth() + 1;
+  let MO = date.getMonth() + 1;
   if (MO <10) { 
     MO = "0"+ MO;
   }
-  let YYYY= new Date(time).getFullYear();
-  let HH = new Date(time).getHours();
+  let YYYY= date.getFullYear();
+  let HH = date.getHours();
    if (HH <10) { 
     HH = "0"+ HH;
   }
-  let MI = new Date(time).getMinutes();
+  let MI = date.getMinutes();
    if (MI <10) { 
     MI = "0"+ MI;
   }
-  let SS = new Date(time).getSeconds();
+  let SS = date.getSeconds();
    if (SS <10) { 
     SS = "0"+ SS;
   }
   let timeEnd =DD + "-" + MO + "-" + YYYY + "  " + HH + ":" + MI + ":" + SS;
-  console.log(timeEnd);
   return timeEnd;
 }
